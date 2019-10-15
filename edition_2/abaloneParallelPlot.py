@@ -35,7 +35,7 @@ for i in range(nrows):
     dataRow = abalone.iloc[i,1:8]
     normTarget = (abalone.iloc[i,8] - meanRings) / sdRings
     labelColor = 1.0/(1.0 + exp(-normTarget))
-    dataRow.plot(color=plot.cm.RdYlBu(labelColor),alpha=0.5)
+    dataRow.plot(color=plot.cm.RdYlBu(labelColor), alpha=0.5)
 
 plot.xlabel("Attributes Index")
 plot.ylabel("Attribute Values")

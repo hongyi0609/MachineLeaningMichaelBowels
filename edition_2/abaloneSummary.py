@@ -1,6 +1,6 @@
 __author__ = 'mike_bowles'
 
-from pylab import *
+import pylab
 import matplotlib.pyplot as plot
 
 import pandas as pd
