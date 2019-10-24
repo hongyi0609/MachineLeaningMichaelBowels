@@ -14,14 +14,14 @@ from pyecharts.charts import Bar
 
 # 去哪儿热门景点excel文件保存路径
 
-PLACE_EXCEL_PATH = 'qunar_place.xlsx'
+PLACE_EXCEL_PATH = '../edition_sample/NationalDayTravel/qunar_place.xlsx'
 # 读取数据
 DF = pd.read_excel(PLACE_EXCEL_PATH)
 
 # 百度热力图模板
-HOT_MAP_TEMPLATE_PATH = 'hot_map_template.html'
+HOT_MAP_TEMPLATE_PATH = '../edition_sample/NationalDayTravel/hot_map_template.html'
 # 生成的国庆旅游景点热力图
-PLACE_HOT_MAP_PATH = 'place_hot_map.html'
+PLACE_HOT_MAP_PATH = '../edition_sample/NationalDayTravel/place_hot_map.html'
 
 def analysis_sale():
     """
@@ -49,7 +49,7 @@ def analysis_sale():
             xaxis_opts=opts.AxisOpts(name="销量")
         )
     )
-    place_sale_bar.render('place-sale-bar.html')
+    place_sale_bar.render('../edition_sample/NationalDayTravel/place-sale-bar.html')
 
 
 
@@ -89,7 +89,7 @@ def analysis_amount():
             xaxis_opts=opts.AxisOpts(name="销售额")
         )
     )
-    place_amount_bar.render('place-amount-bar.html')
+    place_amount_bar.render('../edition_sample/NationalDayTravel/place-amount-bar.html')
 
 
 def analysis_province():
@@ -189,7 +189,7 @@ def analysis_recommend():
             xaxis_opts=opts.AxisOpts(name="瞎推荐系数")
         )
     )
-    place_recommend_bar.render('place-recommend-bar.html')
+    place_recommend_bar.render('../edition_sample/NationalDayTravel/place-recommend-bar.html')
 
 
 if __name__ == '__main__':

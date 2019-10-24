@@ -39,7 +39,7 @@ def spider_place(keyword, page):
         'Accept-Language': 'zh-CN, zh;q = 0.9, en;q = 0.8',
         'Cache-Control': 'max-age = 0',
         'Connection': 'keep - alive',
-        'Cookie': 'QN1 = 000014802eb41a41e438fe4b;QN300 = organic;_i = RBTKSLgC8tExmy6x6oQ_wxhBqZix;QN269 = 9DF13A54E35811E9AD86FA163E29CDD5;QN57 = 15698305360030.1948380886333314;fid = 6cd00ebd - 9d1b - 4f24 - bae9 - 32e38f050de6;csrfToken = twknQDopeSqSmyTqw9oWtASUwo7rxXJB;JSESSIONID = 17E996574DAC1D6250C71078E28E7F22;QN58 = 1571887859354 % 7C1571887859354 % 7C1;_vi = MJBvjAa53MHETW57G_goUAm_GQSaoi - GBUneWO30QGcu4yEn5ZAm6bNC50W1loLtNtRh4tkTX8cF9TXHyRdj7D347E_7hLBm1L1xteyFPHtXP8QdGL7mhoIPjRrxTjQK5xJC13Ui8OY05_wUtrP_v45onPaubNvLYfxiu1wy70GW;QN271 = 6f9f5622 - ea0e - 4543 - 9b12 - 99758fea69eb;QN267 = 1607978286d15e2317',
+        # 'Cookie': 'QN1 = 000014802eb41a41e438fe4b;QN300 = organic;_i = RBTKSLgC8tExmy6x6oQ_wxhBqZix;QN269 = 9DF13A54E35811E9AD86FA163E29CDD5;QN57 = 15698305360030.1948380886333314;fid = 6cd00ebd - 9d1b - 4f24 - bae9 - 32e38f050de6;csrfToken = twknQDopeSqSmyTqw9oWtASUwo7rxXJB;JSESSIONID = 17E996574DAC1D6250C71078E28E7F22;QN58 = 1571887859354 % 7C1571887859354 % 7C1;_vi = MJBvjAa53MHETW57G_goUAm_GQSaoi - GBUneWO30QGcu4yEn5ZAm6bNC50W1loLtNtRh4tkTX8cF9TXHyRdj7D347E_7hLBm1L1xteyFPHtXP8QdGL7mhoIPjRrxTjQK5xJC13Ui8OY05_wUtrP_v45onPaubNvLYfxiu1wy70GW;QN271 = 6f9f5622 - ea0e - 4543 - 9b12 - 99758fea69eb;QN267 = 1607978286d15e2317',
         'Host': 'piao.qunar.com',
         'Upgrade-Insecure-Requests': '1',
         'User-Agent': 'Mozilla / 5.0(Linux;Android6.0;Nexus5Build / MRA58N) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 77.0.3865.90MobileSafari / 537.36'
@@ -51,9 +51,12 @@ def spider_place(keyword, page):
     response = requests.get(url, headers=headers)
     # 提取景点信息
     place_list = get_place_info(response.json())
+
     print(place_list)
-    # 保存景点信息
-    save_excel(place_list)
+
+    if len(place_list) != 0:
+        # 保存景点信息
+        save_excel(place_list)
 
 
 def get_place_info(response_json):
@@ -115,7 +118,7 @@ def patch_spider_place(keyword):
         print(f'正在爬取 {keyword} 第{i}页')
         spider_place(keyword, i)
         # 设置一个时间间隔
-        time.sleep(random.randint(2, 5))
+        time.sleep(random.randint(2, 15))
     print('爬取完成！')
 
 
